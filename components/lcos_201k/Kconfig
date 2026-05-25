@@ -1,0 +1,90 @@
+menu "LCoS 201k Display Configuration"
+
+    config LCOS_DEFAULT_PCLK_GPIO
+        int "Default PCLK GPIO"
+        default 18
+
+    config LCOS_DEFAULT_VSYNC_GPIO
+        int "Default VSYNC GPIO"
+        default 3
+
+    config LCOS_DEFAULT_HSYNC_GPIO
+        int "Default HSYNC GPIO"
+        default 8
+
+    config LCOS_DEFAULT_DE_GPIO
+        int "Default DE GPIO (-1 for internal VALID)"
+        default -1
+
+    config LCOS_DEFAULT_DATA0_GPIO
+        int "Default DATA0 GPIO"
+        default 9
+
+    config LCOS_DEFAULT_DATA1_GPIO
+        int "Default DATA1 GPIO"
+        default 10
+
+    config LCOS_DEFAULT_DATA2_GPIO
+        int "Default DATA2 GPIO"
+        default 11
+
+    config LCOS_DEFAULT_DATA3_GPIO
+        int "Default DATA3 GPIO"
+        default 12
+
+    config LCOS_DEFAULT_DATA4_GPIO
+        int "Default DATA4 GPIO"
+        default 13
+
+    config LCOS_DEFAULT_DATA5_GPIO
+        int "Default DATA5 GPIO"
+        default 14
+
+    config LCOS_DEFAULT_DATA6_GPIO
+        int "Default DATA6 GPIO"
+        default 21
+
+    config LCOS_DEFAULT_DATA7_GPIO
+        int "Default DATA7 GPIO"
+        default 47
+
+    config LCOS_DEFAULT_NRESET_GPIO
+        int "Default NRESET GPIO"
+        default 46
+
+    config LCOS_DEFAULT_VCC_ENA_GPIO
+        int "Default VCC/LED enable GPIO (-1 to disable)"
+        default 41
+
+    config LCOS_DEFAULT_SPI_CS_GPIO
+        int "Default SPI CS GPIO"
+        default 40
+
+    config LCOS_DEFAULT_SPI_CLK_GPIO
+        int "Default SPI CLK GPIO"
+        default 39
+
+    config LCOS_DEFAULT_SPI_MOSI_GPIO
+        int "Default SPI MOSI GPIO"
+        default 48
+
+    config LCOS_DEFAULT_SPI_MISO_GPIO
+        int "Default SPI MISO GPIO"
+        default 38
+
+    config LCOS_SPI_CLOCK_HZ
+        int "SPI clock frequency (Hz)"
+        default 400000
+        range 100000 1500000
+        help
+            SPI clock for configuration interface. Max 1.5 MHz per datasheet.
+
+    config LCOS_INIT_DELAY_MS
+        int "Delay between register writes (ms)"
+        default 5
+
+    config LCOS_ENABLE_REG_VERIFY
+        bool "Enable register verification during init"
+        default y
+
+endmenu

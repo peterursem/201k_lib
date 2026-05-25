@@ -1,0 +1,10 @@
+idf_component_register(
+    SRCS
+        "src/lcos_201k.c"
+        "src/lcos_registers.c"
+    INCLUDE_DIRS
+        "include"
+    REQUIRES
+        driver
+        esp_lcd
+)
