@@ -54,7 +54,7 @@ menu "LCoS 201k Display Configuration"
 
     config LCOS_DEFAULT_VCC_ENA_GPIO
         int "Default VCC/LED enable GPIO (-1 to disable)"
-        default 41
+        default -1
 
     config LCOS_DEFAULT_SPI_CS_GPIO
         int "Default SPI CS GPIO"
