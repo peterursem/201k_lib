@@ -40,7 +40,7 @@ static const char *TAG = "lcos_201k";
 #define LCOS_HW_ID_EXPECTED     0x54
 
 // Display resolution constants
-#define DISP_H_RES              900     // 300 * 3 for RGB serial
+#define DISP_H_RES              300
 #define DISP_V_RES              224
 #define PCLK_FREQ_HZ            26666666  // 160MHz/6 for clean division
 
@@ -48,7 +48,7 @@ static const char *TAG = "lcos_201k";
 #define TIMING_60HZ_H_TOTAL     1716
 #define TIMING_60HZ_H_SYNC      10
 #define TIMING_60HZ_H_BP        20
-#define TIMING_60HZ_H_FP        (TIMING_60HZ_H_TOTAL - DISP_H_RES - TIMING_60HZ_H_SYNC - TIMING_60HZ_H_BP)
+#define TIMING_60HZ_H_FP        (TIMING_60HZ_H_TOTAL - (DISP_H_RES * 3) - TIMING_60HZ_H_SYNC - TIMING_60HZ_H_BP)
 #define TIMING_60HZ_V_TOTAL     262
 #define TIMING_60HZ_V_SYNC      3
 #define TIMING_60HZ_V_BP        18
@@ -211,7 +211,9 @@ static esp_err_t init_lcd(struct lcos_dev_s *dev) {
 
     esp_lcd_rgb_panel_config_t panel_config = {
         .data_width = 8,
-        .psram_trans_align = 64,
+        .dma_burst_size = 64,
+        .in_color_format = LCD_COLOR_FMT_RGB888,
+        .out_color_format = LCD_COLOR_FMT_RGB888,
         .num_fbs = use_double ? 2 : 1,
         .bounce_buffer_size_px = use_double ? (DISP_H_RES * 8) : 0,  // 8 lines, must divide 201600
         .clk_src = LCD_CLK_SRC_PLL160M,
